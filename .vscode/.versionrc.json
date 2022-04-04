@@ -1,0 +1,22 @@
+{
+    "types": [
+      {"type":"docs","section":"Documentation Changes", "hidden": false},
+      {"type":"feat","section":"Features"},
+      {"type":"fix","section":"Bug Fixes"},
+      {"type":"refactor","section":"Refactoring", "hidden": false},
+      {"type":"test","section":"Tests", "hidden": true},
+      {"type":"build","section":"Build System", "hidden": true},
+      {"type":"ci","hidden":true}
+    ],
+
+    "preMajor": true,
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}} [skip ci]",
+    "compareUrlFormat":"{{host}}/CodeBlueAus/_git/CodeBlue.UserAutomation/branchCompare?baseVersion=GT{{previousTag}}&targetVersion=GT{{currentTag}}",
+    "commitUrlFormat": "{{host}}/CodeBlueAus/_git/CodeBlue.UserAutomation/commit/{{hash}}"
+
+    // "bumpFiles" : [
+    //   {
+    //     "filename": "CodeBlue.UserAutomation.psd1"
+    //   }
+    // ]
+}
