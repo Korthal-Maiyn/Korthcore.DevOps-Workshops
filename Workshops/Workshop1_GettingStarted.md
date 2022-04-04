@@ -5,10 +5,10 @@ The aim of this workshop is to run through the basics of how to get started, inc
 ## Contents
 
 1. [Setting Up Your local Environment](#Setting-Up-Your-Local-Environment)
-    - [Getting Started With WSL2](##Getting-Started-With-WSL2)
-    - [Configuring an IDE](##Configuring-an-IDE)
-        - [Starter Visual Studio Code Extensions](###Starter-Visual-Studio-Code-Extensions)
-    - [Configuring SSH (Optional)](##Configuring-SSH-(Optional))
+    - [Getting Started With WSL2](#Getting-Started-With-WSL2)
+    - [Configuring an IDE](#Configuring-an-IDE)
+        - [Starter Visual Studio Code Extensions](#Starter-Visual-Studio-Code-Extensions)
+    - [Configuring SSH (Optional)](#Configuring-SSH-(Optional))
 2. [Source Control Management and Git](#Source-Control-Management-and-Git)
     - GitFlow
     - Basic Commands
