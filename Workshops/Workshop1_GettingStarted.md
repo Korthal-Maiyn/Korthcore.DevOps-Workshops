@@ -9,6 +9,7 @@ The aim of this workshop is to run through the basics of how to get started, inc
     - [Configuring an IDE](#Configuring-an-IDE)
         - [Starter Visual Studio Code Extensions](#Starter-Visual-Studio-Code-Extensions)
     - [Configuring SSH (Optional)](#Configuring-SSH-(Optional))
+    - [Helpful Resources](#Helpful-Resources)
 2. [Source Control Management and Git](#Source-Control-Management-and-Git)
     - GitFlow
     - Basic Commands
@@ -42,7 +43,7 @@ Congratulations! You now have the ***Ubuntu*** Linux Distribution installed on y
 
 For some additional information, you can easily access your Windows file directory from your WSL Distribution by accessing `/mnt/<drive letter>/` or alternatively the other way around, accessing WSL from Windows via `\\wsl$\<Distro>\home\<username>`.
 
-### First Steps Withing Ubuntu
+### First Steps Within Ubuntu
 
 Now that you have your sudo user credentials configured, the first thing you should always look to do is update and upgrade the packages pre-installed on ***Ubuntu*** to ensure they have been updated to the latest version, this includes Git which comes pre-installed on most Linux Distributions. Once you've got your Ubuntu Terminal in front of you, simply type `sudo apt update && sudo apt upgrade` and you'll have everything updated appropriately. You should look to do this regularly, I like to this every time I fire up the Distribution to ensure things are kept up to date.
 
@@ -50,7 +51,7 @@ Now that you have your sudo user credentials configured, the first thing you sho
 
 Now, as above with Distros, there are countless IDE's available that you can choose to use and you may in fact already have a favourite you use daily. However, in order to keep things standardised we are going to talk about ***Visual Studio Code*** specifically as this has fantastic integration with WSL but also a myriad of Extensions available to help with your workflow. There are really two main parts to this, installing ***Visual Studio Code*** and utilising an environment configuration to standardise configs across the board.
 
-Doesn't need much explanation but either head to [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download) and download the latest version applicable for your system *or* if you've still got PowerShell as Admin open, simply type `winget install **Visual Studio Code**` to use the Windows Package Manager to install ***Visual Studio Code*** from the command line.
+Doesn't need much explanation but either head to [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download) and download the latest version applicable for your system *or* if you've still got PowerShell as Admin open, simply type `winget install -e --id Microsoft.VisualStudioCode` to use the Windows Package Manager to install ***Visual Studio Code*** from the command line.
 
 Either way, get ***Visual Studio Code*** installed and we can get some basic Extensions installed! Check the below image for a super handy guide to [Keyboard Shortcuts](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) within ***Visual Studio Code***.
 
@@ -88,9 +89,11 @@ This particular step isn't necessarily a requirement (thus why it is Optional) b
 
 As noted above, you can absolutely configure SSH on a Windows environment (of which I have and use), but for the sake of standardisation we will only focus on generating this within the Linux Distro for this documentation. If you're feeling spicy, feel free to set this up within your Windows Environment instead!
 
-I will be using **Azure DevOps** within this training excercise, there are some caveats. Namely that, at the time of this writing, there is only really **good** support for using a typical *RSA* SSH key type. Whilst this is, realistically more than adequate, the *RSA* SSH keys are technically less secure than using the newer *ED25519* SSH key type, so make sure to at least use a key size of 2048 bits when generating *RSA* SSH keys. Maybe one day specific support may come for ***Azure DevOps***, however as it stands we will focus on the *RSA* SSH key type. As above, if you're feeling adventurous, why not try configuring an *ED25519* SSH key with a provider such as GitHub for a personal Repository to play with. Or maybe try and find some of the workarounds that exist to utilise *ED25519* encryption within ***Azure DevOps*** instead (yes, it is somewhat possible!). All of this will help understand the security and provisioning of access to Repositories outside of a standard GUI logon.
+I will be using **Azure DevOps** within this workshop specifically as that is what I am using currently, as such there are some caveats. Namely that, at the time of this writing, there is only really **good** support for using a typical *RSA* SSH key type. Whilst this is, realistically more than adequate, the *RSA* SSH keys are technically less secure than using the newer *ED25519* SSH key type, so make sure to at least use a key size of 2048 bits when generating *RSA* SSH keys. Maybe one day specific support may come for ***Azure DevOps***, however as it stands we will focus on the *RSA* SSH key type.
 
-Open up your Linux Distro command line interfact and simply type `ssh-keygen -C "username@domain.com"` to generate a new *RSA* SSH key-pair. Leaving no options on `ssh-keygen` will, by default, create a 2048 bit *RSA* key-pair. You will then be prompted to choose a location to save this, just leave the default as this is pretty standard (this is almost always /home/<username>/.ssh/id_rsa). You can, if you so choose, add a passphrase to make your key more secure, however for this particular Workshop that is not necessary. If all goes to plan you should have an output similar to below! *Note: I have explicitly used a different location as I have an id_rsa key-pair already and do not want to overrite this.*
+As above, if you're feeling adventurous, why not try configuring an *ED25519* SSH key with a provider such as GitHub for a personal Repository to play with. Or maybe try and find some of the workarounds that exist to utilise *ED25519* encryption within ***Azure DevOps*** instead (yes, it is somewhat possible!). All of this will help understand the security and provisioning of access to Repositories outside of a standard GUI logon.
+
+Open up your Linux Distro command line interfact and simply type `ssh-keygen -C "username@domain.com"` to generate a new *RSA* SSH key-pair. Leaving no options on `ssh-keygen` will, by default, create a 2048 bit *RSA* key-pair. You will then be prompted to choose a location to save this, just leave the default as this is pretty standard (this is almost always `/home/<username>/.ssh/id_rsa`). You can, if you so choose, add a passphrase to make your key more secure, however for this particular Workshop that is not necessary. If all goes to plan you should have an output similar to below!
 
 <div style="text-align: center;">
 
@@ -112,7 +115,7 @@ Start by typing `cat ~/.ssh/id_rsa.pub` into the Ubuntu CLI to show an output of
 
 Notice the start `ssh-rsa` and the end `username@domain.com` this tells us the key type and the -C comment we made to generate the key. You add comments to help easily distinguish the use case of these keys, and for the most part tend to follow a *username@hostname* or *email.address@domain.com* format.
 
-Now we need to paste this Public Key into your ***Azure DevOps*** Organisation. Obviously start by logging in to your [Azure DevOps Organisation](https://dev.azure.com/) and once you are logged in, select your **User Profile** icon up the Top Right (Step 1). From the subsequent dropdown menu select **Security** (Step 2). And finally select the **SSH public keys** menu item from the left hand menu. Unless you've set this up previously, you should be presented with an empty list.
+Now we need to paste this Public Key into your ***Azure DevOps*** Organisation. Obviously start by logging in to your [Azure DevOps Organisation](https://dev.azure.com/) and once you are logged in, select your **User Profile** icon up the Top Right (Step 1). From the subsequent dropdown menu select **Security** (Step 2). And finally select the **SSH public keys** menu item from the left hand menu (Step 3). Unless you've set this up previously, you should be presented with an empty list.
 
 <div style="text-align: center;">
 
@@ -129,6 +132,8 @@ Hit **+ New Key** up the top right, give it a name that makes sense to you (so a
 </div>
 
 *Note: The details above have already been deleted after screenshots were taken. Images for informational purposes only.*
+
+## Helpful Resources
 
 # Source Control Management and Git
 
