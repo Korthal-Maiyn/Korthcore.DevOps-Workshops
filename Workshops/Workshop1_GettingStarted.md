@@ -13,9 +13,9 @@ The aim of this workshop is to run through the basics of how to get started, inc
     - GitFlow
     - Basic Commands
     - Visual Studio Code Usage
-3. Code Reviews
-    - Comments and Collaboration
-    - Pull Requests
+3. Pull Requests
+    - Code Reviews Comments and Collaboration
+    - Merging
 4. [Helpful Resources](#Helpful-Resources)
 
 # Setting Up Your Local Environment
@@ -197,7 +197,87 @@ Whilst I tend to use the git tools within ***Visual Studio Code*** for my `commi
 
 ## Git in Visual Studio Code
 
-a
+So, as noted above, I tend to use the in-built git functions, with the help of some of those Extensions we installed, to manage my git workflow. Obviously it comes down to what you're most comfortable with, and I do tend to use a mixture of both CLI commands and ***Visual Studio Code*** as well, depending on what I'm looking to do. To keep things nice and simple without feeling overwhelmed, I find it nice to start with the ***Visual Studio Code*** implementation to get a good base idea that you can begin experimenting with the CLI as you find yourself becoming more comfortable using git.
+
+Let's assume you've already used `git clone` or `git init` on your project already so it's ready for version control. If you want to use ***Visual Studio Code*** to edit your code, there's many ways to open the repository. One I like to do is within our ***WSL2 Ubuntu*** environment you can `cd` (change directory) to where your repository is located. Once you're at the top level (which you can easily determine by the location of the .git folder generally) you can type `code .` to open the directory as a whole within ***Visual Studio Code***. But feel free to play around with the different ways to get your project into ***Visual Studio Code*** and use what you feel most comfortable with!
+
+We'll use this particular Project as an example, you can start by selecting the `Source Control` item from the left hand menu. This will throw out a sidebar full of a bunch of different panels relating to your git repository. It should, realistically, look similar to the below.
+
+<div style="text-align: center;">
+
+![Visual Studio Code Source Control](/Workshops/images/2.2_VSCodeSourceControl.png)
+
+</div>
+
+The main panel I tend to pay attention to is the `Changes` panel to keep track of which files I have made changes to and how they compare to previous `commits`. But as you can see, there is a lot of information available across all the different panels. Which `Branches` are on the repository? Which `Repositories` are here? What is the history of `Commits`? Just... Loads of information. To keep it simple, we'll primarily focus on the changes tab.
+
+Okay cool, we've made a couple of changes to our local repository and we'd like to now `commit` those changes. Now, you can realistically do whatever you want for your `commit`, whether you decide to include a message or not is up to you. However, I tend to follow the ***Conventional Commits*** specification, purely because it is both widely adopted and helps to ensure human readable meaning to your `commit messages`. I highly suggest giving the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) documentation a read over to get a base understanding, if you remember we installed the ***Conventional Commits*** Extension earlier on so that will make following this specification much easier. For reference, you should try to always put a relevant message on your `commits` and by keeping your `commits` to a specific change, you can ensure each message is relevant to those changes and available for everyone in the team to see at a quick glance *what* the change was for (e.g. fix: feat: etc.) and a good message indicating it in further detail. Not only that, but it makes documentation of the Project so so much easier.
+
+The first thing we want to do is `stage` our changes, this is effectively preparing our file for a commit, essentially adding the file to git's version control, but it not yet being commited, which comes next. This is achieved with the `git add` command within the CLI. Within ***Visual Studio Code*** and the *Source Control* tab simply hover over your Changes and you should see a little **+** icon, hit this to Stage your changes. The inverse is true also, once they are staged you can hit the **-** icon to remove them from being staged.
+
+<div style="text-align: center;">
+
+![Git Stage](/Workshops/images/2.3_StageChanges.png)
+
+</div>
+
+Once we've `staged` only the relevant changes we want to `commit` (remember, above, we want to group together and `stage` and `commit` like minded changes) we can then look to add a message and `commit` then `sync` these changes up to our remote repository! Now you could absolutely use that little `Message` box above the Staged Changes to enter a typical `commit` message. You can also achieve this in the CLI altogether with `git commit -m "Message Goes Here"` or even not add one at all (don't do that...). However, we're going to use the ***Conventional Commits*** Extension to help us structure and format our `commits` in a nice easy to read and understand manner. We want to start by hovering over the **Source Control** panel and you should see a small circle icon in the middle, and hovering over this will tell you that it is ***Conventional Commits***. Hit this and a little popup window should appear in the centre of your ***Visual Studio Code*** with a heading of **1/5**.
+
+<div style="text-align: center;">
+
+![Conventional Commits](/Workshops/images/2.4_ConventionalCommits.png)
+
+</div>
+
+The first page you're presented with asks you to select the type of change, these are all pretty well explained on-screen. We'll select `docs` for this as we are updating our Documentation. The next stage will ask you to select the `scope` of the change. This will, currently, be empty aside from the three (3) base options of None, New Scope and New Scope (only use once). Or if you have grabbed the `.vscode/config` files, you may see a few extras for different scopes I have put together during my creation. The `scope` helps us determine at which level the changes are being made, however in this instance we can simply select `None` for now.
+
+You are then asked to provide a short, imperative tense description of the change you're committing. As an example, we'd say `Updated Workshop 1` as that's what we've done. The next part asks us to provide a longer, more detailed description of the change. Here we would add something like `Added sections on Git in Visual Studio Code to Workshop 1 Document.`. If you're using an agile methodology or have a system in place that is tracking changes or incidents, the final section allows you to reference these here. This will very much differ from company to company and system to system as to the types of indicators you would include here, for now we can simply leave it blank.
+
+Finally, once that's done the message and ***Conventional Commmits*** structure will be added to the `commit` and we can well... `commit` it. Within Visual Studio Code just hit the little &#10004; icon to `commit`. You'll generally be presented with a confirmation box, but for the most part this should hopefully then present an option to `sync` your `commits` up to the remote repository so the rest of your team can view your changes and `pull` them locally as required!
+
+<div style="text-align: center;">
+
+![Time to Commit!](/Workshops/images/2.5_Commit.png)
+
+</div>
+
+Congratulations, you've just started working collaboratively on a code base by using git and the ***Git Flow*** workflow! Next we're going to talk about ***Code Reviews*** including pull requests! You can verify your changes by checking the Repo within ***Azure DevOps*** where it should show your recent `commits` listed. Have a play around and see if you can figure out how to check the history or do comparisons between the original and the staged changes you have.
+
+<div style="text-align: center;">
+
+![Azure DevOps Repo](/Workshops/images/2.6_DevOpsRepo.png)
+
+</div>
+
+# Pull Requests
+
+Cool, so now you've made your changes to the `dev` branch with those fun little `commits` you've been working on. But what now? Well given we are following the ***Git Flow*** workflow, we would look to merge the changes we've made to `dev` into our `main` production ready branch. You generally accomplish this by creating a `pull request`. As the name implies, you are requesting to `pull` the changes made to your `dev` branch into `main`, and it is explicitly a request as this is where you'll have some processes and checks in place to ensure that the changes you are submitting to `main` won't break the production environment.
+
+There are options within ***Visual Studio Code*** however, as we are using ***Azure DevOps*** I feel it would be helpful to get a feel for the process when done via the web portal as well. Let's imagine that we have set up the relevant policies that require us to have at least one ***Code Review*** by a member of our team prior to approving and processing the `pull request`. Start by logging in to ***Azure DevOps*** and navigating to your `Project -> Repos -> Files` where you should see a layout much like the below.
+
+<div style="text-align: center;">
+
+![Azure DevOps Repo](/Workshops/images/3.1_PullRequest.png)
+
+</div>
+
+You'll notice that we're currently on the `main` branch (as highlighted) but that there is an indication that the `dev` branch has been recently updated and a button to **Create a pull request** to merge these two together. You can realistically process these at any point, or you can make a whole bunch of `commits` and then merge these with a `pull request` when you have a couple of relevant `commits` compiled together. This helps with the `pull request` as you have a fairly solid history of the changes made from the current `main` working branch to the proposed changes to merge.
+
+When you create a **New pull request** there will be a few sections and tabs to go over. Directly under the header tells you from which branch into which branch. You can change these to match whatever your use case is, but for here we'll focus on `dev into main`. Then there is the *Overview* section of the `pull request` where you give it a relevant title name and description going over exactly what changes are being pulled into the `main` branch. You'll have a list of *Reviewers* here, as noted above, assuming we have at least one (1) required as a policy, but as it shows we can have multiple people choose to review it as well as certain people who may be explicitly required to review the changes before approving the merge into production.
+
+<div style="text-align: center;">
+
+![Azure DevOps Pull Request](/Workshops/images/3.2_PullRequest.png)
+
+</div>
+
+Then you can link work items from your boards (you should if you're using these) to help track which requests match which work items as well as any relevant Tags for easy reference later on. If you navigate between the different Tabs you can also see **Files** which will show you the list of Files that were changed for this `pull request` including the changes made to each of them. As well as the **Commits** tab which will show you a sequential list of the `commits` made, by who and the ***Conventional Commits*** message associated.
+
+Hitting Create will then create a new `pull request` for the team to ***Code Review***!
+
+## Code Reviews Comments and Collaboration
+
+Now we've got a `pull request` is where the
 
 # Helpful Resources
 
