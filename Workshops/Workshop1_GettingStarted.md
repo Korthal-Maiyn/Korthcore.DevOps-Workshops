@@ -133,7 +133,11 @@ Hit **+ New Key** up the top right, give it a name that makes sense to you (so a
 
 *Note: The details above have already been deleted after screenshots were taken. Images for informational purposes only.*
 
-## Helpful Resources
+# Source Control Management and Git
+
+
+
+# Helpful Resources
 
 The bulk of the above was collated from a mixture of experience and research from multiple sources. For a collation of helpful official resources I have used and reference often for these items, see below. There are also countless 3rd party blogs and videos out there for you to consume :
 
@@ -161,5 +165,6 @@ The bulk of the above was collated from a mixture of experience and research fro
 - [Sharing SSH keys between Windows and WSL 2](https://devblogs.microsoft.com/commandline/sharing-ssh-keys-between-windows-and-wsl-2/)
 - [Azure DevOps - SSH Keys are of a deprecated type](https://github.com/MicrosoftDocs/azure-devops-docs/issues/11904)
 
-# Source Control Management and Git
+#### Git
 
+- [Use Git version-control tools in Visual Studio Code](https://docs.microsoft.com/en-us/learn/modules/use-git-from-vs-code/)
