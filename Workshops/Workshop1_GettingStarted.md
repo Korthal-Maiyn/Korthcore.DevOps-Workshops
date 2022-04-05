@@ -135,7 +135,69 @@ Hit **+ New Key** up the top right, give it a name that makes sense to you (so a
 
 # Source Control Management and Git
 
+I'm sure most everyone knows about or has heard of Git at least in some capacity. As a simple refresher a git repository is simply a place where the history of the work you have done is stored. Git is only one of a few different types of Version Control / Source Control Management, each with their own pros and cons. However, Git is the most relevant use case for us here and as such is all we will be focussing on. Do feel free to look up some of the others to see the differences!
 
+When it comes to creating a new Repository to store your code base you generally determine what kind of workflow you want to employ for your repository. There are, actually, quite a few different options available to choose from and the type you use kind of helps determine your continuous delivery process. But, it's important to choose a workflow that is suitable for the Team itself, rather than determining which is the *best*. Each option has it's own list of pro's and cons and may or may not integrate in a way that is best for your team's effectiveness.
+
+## Git Branch Workflow
+
+As above, when choosing a workflow a couple of importing things to consider are :
+
+- Does this workflow scale with team sie?
+- Is it easy to undo mistakes and errors with this workflow?
+- Does this workflow impose any new unnecessary cognitive overhead on the team?
+
+And taking a look at some of the more common workflows :
+
+- ***Git Flow*** | You generally have a `main` branch which contains production ready code. A `dev` branch in which newly developed features are integrated and tested. And can have additional supporting branches such as `feature`, `hotfix` and `release`.
+- ***GitHub Flow*** | Works around the rule that the `main` branch is **always** deployable. As such, you'll make a new branch from the `main` branch relevant to work you are doing. Review, discuss and merge back into `main` when ready to do so.
+- ***GitLab Flow*** | Trunk-based using `feature` branches. Test all commits to ensure code integrity, not just on `main`. Code Reviews on merge requests.
+
+I'll be honest and note I've never really followed one of these explicitly, as such I've found I tend to follow a mix of Git Flow and GitLab Flow aspects together. For the sake of simplicity as this is *Getting Started* we'll keep with a typical ***Git Flow*** workflow. Feel free to read up on the many other types of workflows out there and maybe you'll have some feedback on a better choice for your team! An example diagram of ***Git Flow*** is as below (from [GitKraken]() originally):
+
+<div style="text-align: center;">
+
+![Git Flow Example Diagram](/Workshops/images/2.1_GitFlow.png)
+
+</div>
+
+ Since we're keeping it simple, we are going to focus purely on having a primary `main` branch that we treat as containing only production ready code. A `dev` branch in which all changes are made, whether directly or via `feature` branches to add new *features*. And finally mocking a code review for a pull request to merge the `dev` updates into `main`.
+
+## Basic Git
+
+But Chris, what does it all *mean*? I hear you ask. So to try and break it down simply to the way I learnt. We utilise a repository to store not only our code, but also a list of all changes made to that code in the form of `commits` in which the changes between each commit are visible, highlighted and commented (with commit messages) indicating the changes purpose. This helps keep an incredibly handy history for all changes made to the codebase, by who, when and why. And in doing so allows us to quickly and easily roll back to prior last known working versions. There is, of course, so so much more to it than that, but at it's core this is how I have always treated it. Utilising the workflow, on top of this, is what helps keep things nice and tidy.
+
+Given we're assuming this hasn't been done before, one of the first things you need to do is configure git in your environment. There are a myriad of options available for this, however we will purely focus on the most basic ones we need to get started. You're more than welcome to configure a custom `~/.gitconfig` with your own setup if you know how! From the command line we want to start by giving a global username and email associated, do note however, you can very much configure this on a single repository only instead of globally, this helps if you have different details for different repos. We achieve this by typing the following :
+
+```git
+git config --global user.name "Korthal Maiyn"
+git config --global user.email "email@example.com"
+```
+
+Now if we didn't have a repository in ***Azure DevOps*** already, we would use `git init` to create our own new local git repository that we could then push to our remote later on. However, since we are going to use this Repository as an example, you'd instead use `git clone` to clone the contents (pre-existing branches and all) of the repository down to your local machine. This essentially means each team member keeps a copy of the entire repository local in their environment to work on where required.
+
+You continually keep your local repo up to date by using both a `git fetch` and `git pull` prior to making any changes. You will start with a `fetch` against the primary repository (in our case the ***Azure DevOps*** repo.) which will check if there are any remote commits that you should incorporate into yyour local changes, that is, changes made by your team mates that you want to ensure you have a copy of to verify. If things look good, `pull` those changes down to your local so you can ensure you have the most up to date version of the repository. This also helps to prevent merge conflicts, which we won't go over today.
+
+Once you're happy with your changes and `commits` you've made locally, you need to `push` those changes from your local up to the remote repository so as that your team members can see these changes and act accordingly. There is also `sync` which effectively does a pull and push simultaneously.
+
+So, we know that a repository will contain multiple branches that dictate where we work and for what reason. But what else? What do these things mean?
+
+- `git config` | Used to set configuration details for git either globally or on individual repositories.
+- `git init` | Initialises a new repository locally. One way to start a new project by initialising the git repository locally by yourself. Then you can push this up to a remote repository.
+- `git clone` | Also initialises a new repository locally, howevever by cloning a pre-existing repository that already exists down locally.
+- `git checkout` | Used to switch between / checkout the different branches within the repository, including creating new branches to work with such as new `feature` branches or `hotfixes`.
+- `git commit` | When you have finished making changes and have saved your file you will want to `commit` those changes to Git. This means it is treated as a snapshot of the changes made to the file(s) at the point in time the `commit` was made. This is our history of changes that we have the facility to look back on.
+- `git fetch` | Fetches changes to the remote repository different to your local changes. If these exist, you should `pull` to help prevent upstream merge conflicts.
+- `git pull` | Pulls the latest version of the remote repository down locally to ensure you have the most up to date changes.
+- `git push` | Takes the changes and `commits` you have made and pushes them up to the remote repository so as that people can view the changes made.
+- `git sync` | simultaneously runs a `pull` and `push`
+- `pull request` | This will be covered in more detail below, but effectively a request to merge one branch into another branch. i.e. `dev` into `main` once development changes have been completed.
+
+Whilst I tend to use the git tools within ***Visual Studio Code*** for my `commits` and syncing to and from the repository, kowing that you can use these git commands in the command line may be your preference! In any case, it's wise to know exactly *what* each of the different types of commands do and how to use them. There are so many available options, flags and different commands you can use with Git. Have a look through the documentation and see if you can cobble together a slightly improved `.gitconfig` file where you've set some of your own aliases.
+
+## Git in Visual Studio Code
+
+a
 
 # Helpful Resources
 
