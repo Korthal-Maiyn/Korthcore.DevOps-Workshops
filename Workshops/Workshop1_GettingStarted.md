@@ -135,5 +135,31 @@ Hit **+ New Key** up the top right, give it a name that makes sense to you (so a
 
 ## Helpful Resources
 
+The bulk of the above was collated from a mixture of experience and research from multiple sources. For a collation of helpful official resources I have used and reference often for these items, see below. There are also countless 3rd party blogs and videos out there for you to consume :
+
+#### WSL2
+
+- [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+- [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+- [Set up a WSL development environment](https://docs.microsoft.com/en-us/windows/wsl/setup/environment)
+- [Ubuntu on Windows](https://www.microsoft.com/en-au/p/ubuntu-on-windows/9nblggh4msv6?activetab=pivot:overviewtab)
+- [Get started with the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/learn/modules/get-started-with-windows-subsystem-for-linux/)
+- [Get started with the LInux command line and the Shell](https://docs.microsoft.com/en-us/learn/paths/shell/)
+
+#### Visual Studio Code
+
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Get started using Visual Studio Code with Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode)
+- [Visual Studio Code Keyboard Shortcuts for Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+- [Visual Studio Code Extensions Marketplace](https://marketplace.visualstudio.com/VSCode)
+
+#### SSH Keys
+
+- [Azure DevOps - Use SH key authentication](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops)
+- [Generate SSH Keys on Windows 10](https://ubuntu.com/tutorials/ssh-keygen-on-windows)
+- [Key generation with Ubuntu on WSL](https://ubuntu.com/tutorials/ssh-keygen-on-windows#3-key-generation-with-ubuntu-on-wsl)
+- [Sharing SSH keys between Windows and WSL 2](https://devblogs.microsoft.com/commandline/sharing-ssh-keys-between-windows-and-wsl-2/)
+- [Azure DevOps - SSH Keys are of a deprecated type](https://github.com/MicrosoftDocs/azure-devops-docs/issues/11904)
+
 # Source Control Management and Git
 
