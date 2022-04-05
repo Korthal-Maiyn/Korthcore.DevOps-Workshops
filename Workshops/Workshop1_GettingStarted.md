@@ -277,7 +277,59 @@ Hitting Create will then create a new `pull request` for the team to ***Code Rev
 
 ## Code Reviews Comments and Collaboration
 
-Now we've got a `pull request` is where the
+Now we've got a `pull request` is where the collaboration aspect comes in. As noted previously, you can have both optional and required reviewers to go over your code. Your team should generally have visibility of the `pull request` and as such have the facility to add comments / suggestions on improvements or enforcing standarisations prior to approving the merge into the `main` branch.
+
+In a basic example below you can see a couple of comments added in different locations. You can also see highlighted up the top that you have the facility to resolve these comments prior to Approving and Completing the `pull request`. These comments on the **Overview** tab can be filtered from the Filter on the right to what you want to see.
+
+<div style="text-align: center;">
+
+![Pull Request Comments](/Workshops/images/3.3_PullRequestComments.png)
+
+</div>
+
+From these comments above, one was created on the `pull request` **Overview** tab itself as a comment against the entire request. The second is a comment on a specific line of code, usually a change, to provide feedback or questions as to the purpose of changes to the codebase. To add you simply navigate to the Files tab, read through the different file changes, if you have a comment to add simply locate the line in the file that was changed you want to comment on and you will see a little *speech bubble* to indicate adding a comment. Click on this, add your comment and await your reply! These can then be resolved / updated as appropriate, including discussion chains relevant to this change.
+
+Keeping all your comments regarding these changes in the same Source Control system helps keep everything documented from start to finish. If discussions regarding changes are had outside of the system (say in Teams or on calls) they should be updated here as well to reflect those discussions and as such the documentation surrounding those changes where appropriate. Correctly versioned with a long term history that is always visible for anyone new to the codebase.
+
+<div style="text-align: center;">
+
+![File Comments](/Workshops/images/3.4_FileComments.png)
+
+</div>
+
+As you continue to work together as a team and collaborate over the `pull request` changes, you can continue to `commit` updates to reflect that collaboration as you normally would. The **Updates** tab will keep a list of these `commits`, including those made after the `pull request` was created. This helps to determine which changes were made after the request and if they have been commented appropriately, should reference the discussions within the `pull request` itself. This is a really good way to help keep track of what additional changes have been made and what comments / discussions they reference within the `pull request` as well as the facility to jump directly to those latest changes.
+
+<div style="text-align: center;">
+
+![File Comments](/Workshops/images/3.5_Updates.png)
+
+</div>
+
+Once your team and the Project Manager / Project Owner are happy with the changes made, including those made during the `pull request` ***Code Reviews*** collaboratively, those listed reviewers (both optional and Required) should ensure they have approved the `pull request` and thus approve to merge those changes from `dev into main`.
+
+# Merging
+
+Once you've got that approval it's time to **Complete** the `pull request` by merging from `dev into main`, there are of course a whole bunch of additional details regarding things like **Branch Policies** and whether or not they are passing or failing for the `pull request` but for the most part we will ignore that as it is outside of the scope of this basic getting started workshop. When you hit **Complete** you're presented with a *Complete Pull Request* flyout on the right hand side of your browser which will ask you to provide the Merge type, and additional post-completion options. Play around with the different Merge Types on the flyout as the little diagram underneath can help you to understand the purpose.
+
+- **Merge (no fast forward):** Merge with a non-linear history that preserves all commits.
+- **Squash commit:** Merge with a linear history that combines all source commits into a single commit on the target, or squash merges the PR.
+- **Rebase and fast-forward:** Rebase the source commits onto the target and fast-forward.
+- **Semi-linear merge:** Rebase source commits onto the target and create a two-parent merge.
+
+The Policies mentioned above can be applied to these, such as a branch maybe containing a `squash merge only` policy. However we will ignore these for now and instead purely use a ***Merge (no fast forward)***. The options underneath for post-completion are fairly self explanatory. Depending on the type of workflow you are using may determine whether or not you delete the branch for example. However items such as **Complete associated work items after merging** make sense, unless you have a separate policy in place for this.
+
+- **Complete associated work items after merging:** Complete any linked work items.
+- **Delete <branch name> after merging:** Delete the PR's source branch after merging.
+- **Customize merge commit message:** Add a custom merge commit message. If you select this option, update the merge commit message.
+- **Override branch policies and enable merge:** Force the merge even if the PR doesn't satisfy all branch policies. This option is only available if you have Exempt from policy enforcement permission.
+
+<div style="text-align: center;">
+
+![Complete Pull Request](/Workshops/images/3.6_Merging.png)
+
+</div>
+
+And just like that, you've successfully worked collaboratively on a `pull request` and then merged those changes into the `main` production branch! Remember, the way in which you proceed through these kinds of actions is very much determined by the type of git workflow you are using. There is a *lot* of flexibility here on how things are done and a lot of it comes down to what works within the team and which processes can be easily employed vs those that may not be able to.
 
 # Helpful Resources
 
@@ -309,4 +361,14 @@ The bulk of the above was collated from a mixture of experience and research fro
 
 #### Git
 
+- [AZ-400 Work with Git for enterprise DevOps](https://docs.microsoft.com/en-us/learn/paths/az-400-work-git-for-enterprise-devops/)
+- [Git Flow](https://www.gitkraken.com/learn/git/git-flow)
+- [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
+- [GitHub Flow](https://www.w3schools.com/git/git_github_flow.asp?remote=github)
+- [GitLab Flow](https://about.gitlab.com/solutions/gitlab-flow/)
+- [First-Time Git Setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+- [Use git fetch, pull, push and sync for version control in Visual Studio](https://docs.microsoft.com/en-us/visualstudio/version-control/git-fetch-pull-sync?view=vs-2022)
 - [Use Git version-control tools in Visual Studio Code](https://docs.microsoft.com/en-us/learn/modules/use-git-from-vs-code/)
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [Azure DevOps Create Pull Requests](https://docs.microsoft.com/en-us/azure/devops/repos/git/pull-requests?view=azure-devops&tabs=browser)
+- [Azure DevOps Complete Pull Requests](https://docs.microsoft.com/en-us/azure/devops/repos/git/complete-pull-requests?view=azure-devops&tabs=browser)
