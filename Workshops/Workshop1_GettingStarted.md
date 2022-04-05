@@ -9,14 +9,14 @@ The aim of this workshop is to run through the basics of how to get started, inc
     - [Configuring an IDE](#Configuring-an-IDE)
         - [Starter Visual Studio Code Extensions](#Starter-Visual-Studio-Code-Extensions)
     - [Configuring SSH (Optional)](#Configuring-SSH-(Optional))
-    - [Helpful Resources](#Helpful-Resources)
 2. [Source Control Management and Git](#Source-Control-Management-and-Git)
     - GitFlow
     - Basic Commands
     - Visual Studio Code Usage
 3. Code Reviews
-    - Comments
+    - Comments and Collaboration
     - Pull Requests
+4. [Helpful Resources](#Helpful-Resources)
 
 # Setting Up Your Local Environment
 
